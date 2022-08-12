@@ -9,6 +9,12 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</button> 
+            <p class ='delete'>[<span onclick = "return deletePost(this);" >delete</span>]</p>
+        </form>
         <h1 class="title">
             {{ $post->title }}
         </h1>
@@ -22,5 +28,13 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        <script>
+            function deletePost(e){
+                'use strict'
+                if(confirm ('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById('form_delete').submit();
+                }
+            }
+        </script>
     </body>
 </html>
