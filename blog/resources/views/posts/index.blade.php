@@ -7,6 +7,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        @extends('layouts.app')
+        @section('content')
+        {{Auth::user()->name}}
         <h1>Blog Name</h1>
         [<a href='/posts/create'>create</a>]
         
@@ -15,6 +18,7 @@
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        <a href="">{{ $post->category->name }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
@@ -23,5 +27,6 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
+        @endsection
     </body>
 </html>

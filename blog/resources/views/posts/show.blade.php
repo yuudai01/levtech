@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+        @extends('layouts.app')
+        @section('content')
         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
             @csrf
             @method('DELETE')
@@ -19,6 +21,7 @@
             {{ $post->title }}
         </h1>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+        <a href="">{{ $post->category->name }}</a>
         <div class="content">
             <div class="content__post">
                 <h3>本文</h3>
@@ -36,5 +39,6 @@
                 }
             }
         </script>
+        @endsection
     </body>
 </html>
