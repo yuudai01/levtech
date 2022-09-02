@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest; // useする
+use App\Category;
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(1)]);
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
+        
     } 
     /**
     * 特定IDのpostを表示する
@@ -22,10 +24,7 @@ class PostController extends Controller
     {
         return view('posts/show')->with(['post' => $post]);
     }
-    public function create()
-    {
-        return view('posts/create');
-    }
+    
     public function store(Post $post, PostRequest $request)
     {
         $input = $request['post'];
@@ -48,5 +47,10 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
+    public function create(Category $category)
+    {
+        return view('posts/create')->with(['categories' => $category->get()]);;
+    }
+    
 }
 ?>
