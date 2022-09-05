@@ -18,6 +18,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/posts/{post}', 'PostController@update');
     Route::delete('/posts/{post}', 'PostController@delete');
     Route::get('/posts/{post}/edit', 'PostController@edit');
+    Route::get('/categories/{category}', 'CategoryController@index');
+    Route::get('/posts/PR/{user}', 'PostController@PR');
 });
 
 Auth::routes();

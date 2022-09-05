@@ -9,7 +9,7 @@
     <body>
         @extends('layouts.app')
         @section('content')
-        {{Auth::user()->name}}
+        <a href='/posts/PR/{{Auth::user()->id}}'>{{Auth::user()->name}}</a>
         <h1>Blog Name</h1>
         [<a href='/posts/create'>create</a>]
         
@@ -18,9 +18,10 @@
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        <a href="">{{ $post->category->name }}</a>
+                        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
+                    <p>公開日時 : {{$post->created_at}}</p>
                 </div>
             @endforeach
         </div>
