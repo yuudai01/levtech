@@ -52,5 +52,9 @@ class PostController extends Controller
         return view('posts/create')->with(['categories' => $category->get()]);;
     }
     
+    public function PR(Post $post)
+    {
+        return view('posts/PR')->with(['post' => $post]);
+    }
 }
 ?>
