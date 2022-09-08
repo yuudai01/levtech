@@ -28,6 +28,19 @@
                 @endforeach
             </select>
             </div>
+            <div classs= "NG">
+  	        <p>ネタバレはありますか？</p>
+  	        <label><input type="radio" name="post[NG]" value="あり">ネタバレあり</label>
+  	        <label><input type="radio" name="post[NG]" value="なし">ネタバレなし</label>
+	        </div>
+	        <div classs= "ranking">
+	        <p>漫画の評価</p>
+  	        <label><input type="radio" name="post[ranking]" value="5">5</label>
+  	        <label><input type="radio" name="post[ranking]" value="4">4</label>
+  	        <label><input type="radio" name="post[ranking]" value="3">3</label>
+  	        <label><input type="radio" name="post[ranking]" value="2">2</label>
+  	        <label><input type="radio" name="post[ranking]" value="1">1</label>
+	        </div>
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
