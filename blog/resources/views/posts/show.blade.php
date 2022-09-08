@@ -25,7 +25,10 @@
         <div class="content">
             <div class="content__post">
                 <h3>本文</h3>
-                <p>{{ $post->body }}</p>    
+                <p>{{ $post->body }}</p>
+                <p>公開日時 : {{$post->created_at}}</p>
+                <p>ネタバレ{{$post->NG}}</p>
+                <p>5段階評価 : {{$post->ranking}}</p>
             </div>
         </div>
         <div class="footer">

@@ -22,6 +22,8 @@
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                     <p>公開日時 : {{$post->created_at}}</p>
+                    <p>ネタバレ{{$post->NG}}</p>
+                    <p>5段階評価 : {{$post->ranking}}</p>
                 </div>
             @endforeach
         </div>

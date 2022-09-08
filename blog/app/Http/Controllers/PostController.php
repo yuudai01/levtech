@@ -28,6 +28,7 @@ class PostController extends Controller
     public function store(Post $post, PostRequest $request)
     {
         $input = $request['post'];
+        
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -54,7 +55,9 @@ class PostController extends Controller
     
     public function PR(Post $post)
     {
+        return view('posts/PR')->with(['posts' => $post->getPaginateByLimit(5)]);
         return view('posts/PR')->with(['post' => $post]);
     }
+    
 }
 ?>
