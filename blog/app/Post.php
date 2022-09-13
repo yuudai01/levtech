@@ -15,7 +15,8 @@ class Post extends Model
         'category_id',
         'updated_at',
         'NG',
-        'ranking'
+        'ranking',
+        'user_id'
     ];
     
     public function getPaginateByLimit(int $limit_count = 10)
@@ -29,5 +30,12 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\user');
+    }
+    public function getPaginateByLimitWithAuth(int $limit_count=10){
+        return $this::where('user_id',auth()->id())->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

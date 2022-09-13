@@ -41,6 +41,7 @@
   	        <label><input type="radio" name="post[ranking]" value="2">2</label>
   	        <label><input type="radio" name="post[ranking]" value="1">1</label>
 	        </div>
+	        <input type="hidden" name="post[user_id]" value="{{ auth()->id() }}" />
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>

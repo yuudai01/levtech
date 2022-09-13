@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //「1対多」の関係なので'posts'と複数形に
+    public function post()   
+    {
+        return $this->hasMany('App\Post');  
+    }
+    function getPaginateByLimit(int $limit_count = 5)
+    {
+        return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }

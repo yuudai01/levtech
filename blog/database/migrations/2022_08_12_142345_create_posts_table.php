@@ -19,6 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('body', 200);
             $table->timestamps();
             $table->softDeletes();
+            $table->Integer('user_id')->unsigned();
+            $table->biginteger('category_id')->unsigned();
+            $table->string('NG');
+            $table->string('ranking');
         });
     }
 
