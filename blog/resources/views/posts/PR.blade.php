@@ -7,10 +7,7 @@
     <body>
         @extends('layouts.app')
         @section('content')
-        <h2>プロフィール</h2>
-        <a>{{Auth::user()->name}}</a>
-        <h3>自己紹介</h3>
-        
+        <h3>{{Auth::user()->name}}</h3>
         <h1>Blog Name</h1>
         [<a href='/posts/create'>create</a>]
         <div class='posts'>
@@ -22,6 +19,9 @@
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                     <p>公開日時 : {{$post->created_at}}</p>
+                    <p>ネタバレ{{$post->NG}}</p>
+                    <p>5段階評価 : {{$post->ranking}}</p>
+                    
                 </div>
             @endforeach
         </div>

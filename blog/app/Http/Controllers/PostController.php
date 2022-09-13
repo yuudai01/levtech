@@ -55,8 +55,10 @@ class PostController extends Controller
     
     public function PR(Post $post)
     {
-        return view('posts/PR')->with(['posts' => $post->getPaginateByLimit(5)]);
-        return view('posts/PR')->with(['post' => $post]);
+        //return view('posts/PR')->with(['posts' => $post->getPaginateByLimit(5)]);
+        $authId = auth()->id();
+        $post->where('user_id', auth()->id());
+        return view('posts/PR')->with(['posts' => $post->getPaginateByLimitWithAuth()]);
     }
     
 }
