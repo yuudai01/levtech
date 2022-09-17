@@ -13,8 +13,15 @@
         <h1>Blog Name</h1>
         [<a href='/posts/create'>create</a>]
         
+        <div>
+            <form action="{{ route('posts.index') }}" method="GET">
+                <input type="text" name="keyword" placeholder="検索ワード" value="{{ $keyword }}">
+                <input type="submit" value="検索">
+            </form>
+        </div>
         <div class='posts'>
             @foreach ($posts as $post)
+                
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
@@ -25,10 +32,8 @@
                     <p>ネタバレ{{$post->NG}}</p>
                     <p>5段階評価 : {{$post->ranking}}</p>
                 </div>
+                
             @endforeach
-        </div>
-        <div class='paginate'>
-            {{ $posts->links() }}
         </div>
         @endsection
     </body>
