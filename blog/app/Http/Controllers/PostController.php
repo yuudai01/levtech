@@ -9,9 +9,24 @@ use App\Category;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post, Request $request)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
+        $keyword = $request->input('keyword');
+
+        $query = Post::query();
+        
+        if(!empty($keyword)) {
+                
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('body', 'LIKE', "%{$keyword}%");
+        
+            
+        }
+        
+        
+        $post = $query->get();
+        
+        return view('posts/index')->with(['posts' => $post, 'keyword'=> $keyword]);
         
     } 
     /**
@@ -55,7 +70,7 @@ class PostController extends Controller
     
     public function PR(Post $post)
     {
-        //return view('posts/PR')->with(['posts' => $post->getPaginateByLimit(5)]);
+        
         $authId = auth()->id();
         $post->where('user_id', auth()->id());
         return view('posts/PR')->with(['posts' => $post->getPaginateByLimitWithAuth()]);
